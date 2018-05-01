@@ -1,3 +1,8 @@
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+
+<div class="form-group">
 <%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
@@ -13,27 +18,27 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :company_name %>
+    <%= form.text_field :name, id: :company_name , class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :company_description %>
+    <%= form.text_area :description, id: :company_description , class: "form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :company_url %>
-    <%= form.text_field :company_url, id: :company_company_url %>
+    <%= form.text_field :company_url, id: :company_company_url, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :company_email %>
+    <%= form.text_field :email, id: :company_email, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :contact_no %>
-    <%= form.text_field :contact_no, id: :company_contact_no %>
+    <%= form.text_field :contact_no, id: :company_contact_no, class: "form-control" %>
   </div>
 
   <%= form.label :select_cities %><br /
@@ -45,12 +50,19 @@
 <option>Ketchup</option>
 <option>Relish</option>
 </select>
+
+
   <div class="actions">
-    <%= form.submit %>
+  <%= form.submit "Add Company",  class: "btn btn-primary" %>
+
   </div>
 
 
  
 
 <% end %>
+</div>
+</div>
+</div>
 
+</div>
