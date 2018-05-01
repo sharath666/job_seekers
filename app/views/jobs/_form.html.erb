@@ -1,0 +1,69 @@
+
+<%= form_with(model: job, local: true) do |form| %>
+  <% if job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :job_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company %>
+    <%= form.collection_select :company_id, Company.all, :id, :name, prompt: "Select the company"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :job_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= collection_select(:location, :location_id, Location.all, :id, :name_with_initial, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :experience_type %>
+    <%= collection_select(:experience_type, :experience_type_id, ExperienceType.all, :id, :name_with_initial, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :eligibility %>
+    <%= form.text_area :eligibility, id: :job_eligibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desired_skills %>
+    <%= form.text_area :desired_skills, id: :job_desired_skills %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.text_field :salary, id: :job_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position_id %>
+    <%= collection_select(:position, :position_id, Position.all, :id, :name_with_initial, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_type_id %>
+    <%= collection_select(:job_type, :job_type_id, JobType.all, :id, :name_with_initial, prompt: true)%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit%>
+  </div>
+<% end %>
