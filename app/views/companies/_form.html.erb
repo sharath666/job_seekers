@@ -36,7 +36,21 @@
     <%= form.text_field :contact_no, id: :company_contact_no %>
   </div>
 
+  <%= form.label :select_cities %><br /
+  <%= form.collection_check_boxes :city_ids, City.all, :id, :name %>
+  <br />
+
+<select class="selectpicker" multiple>
+<option>Mustard</option>
+<option>Ketchup</option>
+<option>Relish</option>
+</select>
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
+ 
+
 <% end %>
+
