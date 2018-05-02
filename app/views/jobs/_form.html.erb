@@ -11,59 +11,69 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, id: :job_name, class:"form-control" %>
+        </div>
 
+        <div class="field">
+          <%= form.label :company %>
+          <%= form.collection_select :company_id, Company.all, :id, :name, {prompt: "Select the company"}, {class:"form-control"}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :job_name %>
-  </div>
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description, id: :job_description, class:"form-control" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :company %>
-    <%= form.collection_select :company_id, Company.all, :id, :name, prompt: "Select the company"%>
-  </div>
+        <div class="field">
+          <%= form.label :location %>
+          <%= form.collection_select :location_id, Location.all, :id, :name,  {prompt: "select the location"}, {class:"form-control"}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :job_description %>
-  </div>
+        <div class="field">
+          <%= form.label :experience_type %>
+          <%= form.collection_select :experience_type_id, ExperienceType.all, :id, :name, {prompt: "select the experience type"}, {class:"form-control"}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= collection_select(:location, :location_id, Location.all, :id, :name_with_initial, prompt: true)%>
-  </div>
+        <div class="field">
+          <%= form.label :eligibility %>
+          <%= form.text_area :eligibility, id: :job_eligibility, class:"form-control" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :experience_type %>
-    <%= collection_select(:experience_type, :experience_type_id, ExperienceType.all, :id, :name_with_initial, prompt: true)%>
-  </div>
+        <div class="field">
+          <%= form.label :desired_skills %>
+          <%= form.text_area :desired_skills, id: :job_desired_skills, class:"form-control" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :eligibility %>
-    <%= form.text_area :eligibility, id: :job_eligibility %>
-  </div>
+        <div class="field">
+          <%= form.label :salary %>
+          <%= form.text_field :salary, id: :job_salary, class:"form-control" %>
+        </div>
 
-  <div class="field">
-    <%= form.label :desired_skills %>
-    <%= form.text_area :desired_skills, id: :job_desired_skills %>
-  </div>
+        <div class="field">
+          <%= form.label :position_id %>
+          <%= form.collection_select :position_id, Position.all, :id, :name, {prompt: "select the position"}, {class: "form-control"}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :salary %>
-    <%= form.text_field :salary, id: :job_salary %>
-  </div>
+        <div class="field">
+          <%= form.label :job_type_id %>
+          <%= form.collection_select  :job_type_id, JobType.all, :id, :name, {prompt: "select the job type"}, {class: "form-control"}%>
+        </div>
 
-  <div class="field">
-    <%= form.label :position_id %>
-    <%= collection_select(:position, :position_id, Position.all, :id, :name_with_initial, prompt: true)%>
-  </div>
+        <%= form.label :select_technologies %><br /
+  <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name %>
+  <br />
 
-  <div class="field">
-    <%= form.label :job_type_id %>
-    <%= collection_select(:job_type, :job_type_id, JobType.all, :id, :name_with_initial, prompt: true)%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit%>
-  </div>
-<% end %>
+        <div class="actions">
+          <%= form.submit%>
+        </div>
+      <% end %>
+    </div>
+      </div>
+    </div>
+</div>

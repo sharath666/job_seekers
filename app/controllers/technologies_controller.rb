@@ -1,6 +1,5 @@
 class TechnologiesController < ApplicationController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
-
   # GET /technologies
   # GET /technologies.json
   def index

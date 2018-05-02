@@ -1,0 +1,41 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-6">
+        <h1> Dashboard</h1>
+
+
+        <h3> Total no of jobs <%= @jobs.count %></h3>
+        <% job_count = {} %>
+        <% @companies.each do |company| %>
+        <%job_count[company.name] =  Job.where('company_id=?', company ).length %>
+        <% end %>
+
+        <%= column_chart(job_count) %>
+    </div>
+    <div class="col-md-6">
+        <% techonology_job_count = {} %>
+        <% @companies.each do |company| %>
+            
+
+        <% company.jobs.each do |job| %>
+
+        <%techonology_job_count[company.name] = job.technologies.length %>
+        <% end %>
+        <% end %>
+
+        <%= column_chart(techonology_job_count) %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <% technology_count = {} %>
+        <% @technologies.each do |technology| %>
+        
+
+        <% technology_count[technology.name] = technology.jobs.pluck(:company_id).length  %>
+        <% end %>
+
+
+        <%= column_chart(technology_count) %>
+    </div>

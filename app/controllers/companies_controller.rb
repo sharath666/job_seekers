@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-
   # GET /companies
   # GET /companies.json
   def index
@@ -51,6 +50,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+
+  def select_cities
+    @select_cities = City.all
+  end
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
@@ -69,6 +72,7 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :description, :company_url, :email, :contact_no)
+      params.require(:company).permit(:name, :description, :company_url, :email, :contact_no, city_ids: [])
+      
     end
 end

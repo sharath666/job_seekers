@@ -1,6 +1,5 @@
 class JobTypesController < ApplicationController
   before_action :set_job_type, only: [:show, :edit, :update, :destroy]
-
   # GET /job_types
   # GET /job_types.json
   def index

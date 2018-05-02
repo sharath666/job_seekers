@@ -1,22 +1,34 @@
-<%= form_with(model: job_type, local: true) do |form| %>
-  <% if job_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(job_type.errors.count, "error") %> prohibited this job_type from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form_with(model: job_type, local: true) do |form| %>
+          <% if job_type.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(job_type.errors.count, "error") %> prohibited this job_type from being saved:</h2>
 
-      <ul>
-      <% job_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <ul>
+              <% job_type.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name, id: :job_type_name, class:"form-control" %>
+          </div><br />
+
+          <div class="actions">
+            <% if params[:id].nil? %>
+            <%= form.submit "Add Job type", class: "btn btn-primary" %>
+            <% else %>
+            <%= form.submit "Update Job type", class: "btn btn-primary"%>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :job_type_name %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>          

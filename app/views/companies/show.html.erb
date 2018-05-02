@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<div class="container">
+<p style="text-align:center">
+<strong>Name:</strong>
   <%= @company.name %>
-</p>
+  </p>
+<div class="row">
+
+  
+
+<div class="col-md-6">
+
 
 <p>
   <strong>Description:</strong>
@@ -25,5 +32,27 @@
   <%= @company.contact_no %>
 </p>
 
+<p> 
+<strong> City <strong>
+<% @company.cities.each do |f| %>
+  <%= f.name %>
+  <% end %>
+
+<p>
+<strong> Jobs Available </strong>
+<% @company.jobs.each do |company| %>
+<%=link_to  company.name, job_path(company)  %>
+<strong>technologies  - </strong>
+<% company.technologies.each do |technology| %> 
+
+<%= link_to "#{technology.name}", technology_path(technology) %>
+  
+<% end %>
+
+</p>
+<% end %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+</div>
+</div>

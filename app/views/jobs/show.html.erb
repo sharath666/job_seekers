@@ -7,7 +7,7 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @job.company_id %>
+  <%= @job.company.name%>
 </p>
 
 <p>
@@ -17,12 +17,12 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @job.location_id %>
+  <%= @job.location.name %>
 </p>
 
 <p>
   <strong>Experience type:</strong>
-  <%= @job.experience_type_id %>
+  <%= @job.experience_type.name %>
 </p>
 
 <p>
@@ -42,12 +42,12 @@
 
 <p>
   <strong>Position:</strong>
-  <%= @job.position_id %>
+  <%= @job.position.name%>
 </p>
 
 <p>
   <strong>Job type:</strong>
-  <%= @job.job_type_id %>
+  <%= @job.job_type.name%>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

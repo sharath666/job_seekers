@@ -5,5 +5,6 @@ class Company < ApplicationRecord
     has_many :cities, through: :company_cities
     has_many :company_locations
     has_many :locations, through: :company_locations
+    has_many :jobs
 
 end

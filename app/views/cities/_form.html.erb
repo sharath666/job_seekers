@@ -1,3 +1,8 @@
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-6">
+
+<div class="form-group">
 <%= form_with(model: city, local: true) do |form| %>
   <% if city.errors.any? %>
     <div id="error_explanation">
@@ -13,10 +18,14 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :city_name %>
+    <%= form.text_field :name, id: :city_name, class: "form-control" %><br />
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add city", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
+</div>
+</div>
+</div>

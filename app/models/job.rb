@@ -4,4 +4,8 @@ class Job < ApplicationRecord
     belongs_to :job_type
     belongs_to :position
     belongs_to :experience_type
+    belongs_to :company
+    belongs_to :location
+    has_many :job_technologies
+    has_many :technologies, through: :job_technologies
 end
