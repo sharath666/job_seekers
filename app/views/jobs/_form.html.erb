@@ -1,4 +1,8 @@
-
+<div class="container">
+  <div class="row">
+  <div class="col-md-6">
+      <div class="form-group">
+    
 <%= form_with(model: job, local: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -11,10 +15,6 @@
       </ul>
     </div>
   <% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
         <div class="field">
           <%= form.label :name %>
           <%= form.text_field :name, id: :job_name, class:"form-control" %>
@@ -64,16 +64,26 @@
           <%= form.label :job_type_id %>
           <%= form.collection_select  :job_type_id, JobType.all, :id, :name, {prompt: "select the job type"}, {class: "form-control"}%>
         </div>
+        <%= form.label :select_technologies %><br />
+ <%= form.collection_select(:technology_ids, Technology.all, :id, :name, {}, {:class => "city-basic-multiple-limit form-control", :multiple => "select2"}) %>
 
-        <%= form.label :select_technologies %><br /
-  <%= form.collection_check_boxes :technology_ids, Technology.all, :id, :name %>
-  <br />
-
+ <br />
         <div class="actions">
-          <%= form.submit%>
+          <% if params[:id].nil? %>
+          <%= form.submit "Add Job", class: "btn btn-primary" %>
+          <% else %>
+          <%= form.submit "Update Job", class: "btn btn-primary" %>
+          <% end %>
         </div>
       <% end %>
     </div>
       </div>
     </div>
 </div>
+
+<script>
+$(".city-basic-multiple-limit").select2({
+       placeholder: "Select the Technologies"
+});
+
+</script>

@@ -4,69 +4,66 @@
 
 <div class="form-group">
 <%= form_with(model: company, local: true) do |form| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+ <% if company.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+     <ul>
+     <% company.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :company_name , class: "form-control"%>
-    <span id="NameError" style="color: red"></span>  
-  </div>
+ <div class="field">
+   <%= form.label :name %>
+   <%= form.text_field :name, id: :company_name , class: "form-control"%>
+   <span id="NameError" style="color: red"></span>  
+ </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :company_description , class: "form-control"%>
-    <span id="DescriptionError" style="color: red"></span>
-  </div>
+ <div class="field">
+   <%= form.label :description %>
+   <%= form.text_area :description, id: :company_description , class: "form-control"%>
+   <span id="DescriptionError" style="color: red"></span>
+ </div>
 
-  <div class="field">
-    <%= form.label :company_url %>
-    <%= form.text_field :company_url, id: :company_company_url, class: "form-control" %>
-    <span id="CompanyurlError" style="color: red"></span>
-  </div>
+ <div class="field">
+   <%= form.label :company_url %>
+   <%= form.text_field :company_url, id: :company_company_url, class: "form-control" %>
+   <span id="CompanyurlError" style="color: red"></span>
+ </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :company_email, class: "form-control" %>
-    <span id="EmailError" style="color: red"></span>
-  </div>
+ <div class="field">
+   <%= form.label :email %>
+   <%= form.text_field :email, id: :company_email, class: "form-control" %>
+   <span id="EmailError" style="color: red"></span>
+ </div>
 
-  <div class="field">
-    <%= form.label :contact_no %>
-    <%= form.text_field :contact_no, id: :company_contact_no, class: "form-control" %>
-    <span id="ContactError" style="color: red"></span>
-  </div>
+ <div class="field">
+   <%= form.label :contact_no %>
+   <%= form.text_field :contact_no, id: :company_contact_no, class: "form-control" %>
+   <span id="ContactError" style="color: red"></span>
+ </div>
 
+
+ <%= form.label :select_cities %><br />
+ <%= form.collection_select(:city_ids, City.all, :id, :name, {}, {:class => "city-basic-multiple-limit form-control", :multiple => "select2"}) %>
+
+ <br />
  
-
-  <%= form.label :select_cities %><br />
-  <%= form.collection_check_boxes :city_ids, City.all, :id, :name %>
-  <br />
-<select class="js-example-basic-multiple-limit form-control" multiple="select2">
-
-</select> 
 
 
 <br /><br />
-  <div class="actions">
-  <% if params[:id].nil? %>
-  <%= form.submit "Add Company",  class: "btn btn-primary" %>
-      <% else %>
-      <%= form.submit "Update Company", class: "btn btn-primary" %>
-      <% end %>
-  </div>
+ <div class="actions">
+ <% if params[:id].nil? %>
+ <%= form.submit "Add Company",  class: "btn btn-primary" %>
+     <% else %>
+     <%= form.submit "Update Company", class: "btn btn-primary" %>
+     <% end %>
+ </div>
 
 
- 
 
 <% end %>
 </div>
@@ -76,8 +73,8 @@
 </div>
 
 <script>
-$(".js-example-basic-multiple-limit").select2({
-        placeholder: "Select the Cities"
+$(".city-basic-multiple-limit").select2({
+       placeholder: "Select the Cities"
 });
 
 </script>

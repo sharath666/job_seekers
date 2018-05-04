@@ -1,7 +1,10 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   # GET /companies
   # GET /companies.json
+  
   def index
     @companies = Company.all
   end

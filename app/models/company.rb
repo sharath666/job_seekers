@@ -6,5 +6,5 @@ class Company < ApplicationRecord
     has_many :company_locations
     has_many :locations, through: :company_locations
     has_many :jobs
-
+    # accepts_nested_attributes_for :cities
 end

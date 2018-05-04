@@ -1,4 +1,6 @@
 class ExperienceTypesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_experience_type, only: [:show, :edit, :update, :destroy]
 
   # GET /experience_types
